@@ -19,7 +19,12 @@ dependencies:
   dartz: ^0.10.1
   flutter_bloc: ^8.1.6
   get_it: ^8.2.0
-  home_widget: ^0.8.1
+  home_widget: ^0.10.0
+  flutter_local_notifications: ^22.3.1
+  timezone: ^0.11.1
+  flutter_timezone: ^5.1.0
+  isar: ^4.0.0-dev.3
+  isar_flutter_libs: ^4.0.0-dev.3
   
 dev_dependencies:
   flutter_test:

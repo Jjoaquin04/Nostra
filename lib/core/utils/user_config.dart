@@ -5,6 +5,7 @@ class UserConfig {
   static const String _nameKey = 'user_name';
   static const String _initialBalanceKey = 'initial_balance';
   static const String _isConfiguredKey = 'is_configured';
+  static const String _initialNotificationsValue = 'initial_notifications';
 
   /// Verifica si el usuario ya configuró su perfil
   static Future<bool> isUserConfigured() async {
@@ -38,6 +39,16 @@ class UserConfig {
   static Future<void> updateInitialBalance(double newBalance) async {
     final box = await _openBox();
     await box.put(_initialBalanceKey, newBalance);
+  }
+
+  static Future<void> updateNotificationsOption(String status) async {
+    final box = await _openBox();
+    await box.put(_initialNotificationsValue, status);
+  }
+
+  static Future<String> checkNotificationsOption() async {
+    final box = await _openBox();
+    return await box.get(_initialNotificationsValue);
   }
 
   static Future<Box> _openBox() async {

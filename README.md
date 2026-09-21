@@ -136,7 +136,7 @@ lib/
 │   └── utils/           # Utilidades generales
 │
 ├── featured/
-│   └── expenses/
+│   └── 
 │       ├── data/
 │       │   ├── datasources/     # Fuente de datos (Hive)
 │       │   ├── expense_model.dart   # Modelo de datos

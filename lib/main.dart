@@ -11,11 +11,13 @@ import 'package:nostra/core/constant/hive_constants.dart';
 import 'package:nostra/core/dependency_injection/dependecy_injection.dart';
 import 'package:nostra/core/localization/locale_cubit.dart';
 import 'package:nostra/core/utils/user_config.dart';
-import 'package:nostra/featured/expenses/data/expense_model.dart';
-import 'package:nostra/featured/expenses/data/expense_change_history.dart';
-import 'package:nostra/featured/expenses/presentation/bloc/expense_bloc.dart';
-import 'package:nostra/featured/expenses/presentation/pages/expenses_screen.dart';
-import 'package:nostra/featured/expenses/presentation/pages/welcome_screen.dart';
+import 'package:nostra/featured/data/expense_model.dart';
+import 'package:nostra/featured/data/expense_change_history.dart';
+import 'package:nostra/featured/presentation/bloc/expense_bloc.dart';
+import 'package:nostra/featured/presentation/bloc/notifications_bloc.dart';
+import 'package:nostra/featured/presentation/pages/expenses_screen.dart';
+import 'package:nostra/featured/presentation/pages/welcome_screen.dart';
+import 'package:nostra/featured/data/datasources/notification_local_service.dart';
 import 'package:nostra/l10n/app_localizations.dart';
 
 const String mainIsolatePortName = "main_isolate_port";
@@ -112,6 +114,10 @@ void main() async {
 
   // 4. Inyección de dependencias y ejecutar la app
   setUpDependencyInjection();
+
+  // 5. Inicializar notificaciones locales
+  await getIt<NotificationLocalService>().init();
+
   runApp(const MainApp());
 }
 
@@ -124,6 +130,7 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => getIt.get<ExpenseBloc>()),
         BlocProvider(create: (_) => getIt.get<LocaleCubit>()),
+        BlocProvider(create: (_) => getIt.get<NotificationsBloc>()),
       ],
       child: BlocBuilder<LocaleCubit, LocaleState>(
         builder: (context, localeState) {

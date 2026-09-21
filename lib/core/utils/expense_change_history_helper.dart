@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:nostra/core/constant/hive_constants.dart';
-import 'package:nostra/featured/expenses/data/expense_change_history.dart';
-import 'package:nostra/featured/expenses/data/expense_model.dart';
+import 'package:nostra/featured/data/expense_change_history.dart';
+import 'package:nostra/featured/data/expense_model.dart';
 
 /// Utilidades para gestionar el historial de cambios de gastos fijos
 class ExpenseChangeHistoryHelper {
